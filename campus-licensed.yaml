@@ -1,6 +1,6 @@
 # 学术资源 IP 认证直连规则集 / academic-licensed resources, direct connection
 # 仓库: https://github.com/Ergo042/clash-academic-direct
-# 条目: 121（DOMAIN-SUFFIX 113 / DOMAIN 8）
+# 条目: 122（DOMAIN-SUFFIX 114 / DOMAIN 8）
 # 实测: 2026-11-22 上海科技大学校园网出口 10.19.75.204，逐条 HTTP + 证书校验通过
 #
 # 用途：这些资源靠"来源 IP 属于订阅机构"授权，走代理会丢掉校园网身份。
@@ -9,6 +9,7 @@
 # 注意：仅在校园网（或机构 IP）内有效；离开校园网时这些规则会让你访问不了对应库。
 payload:
   - DOMAIN-SUFFIX,aacrjournals.org
+  - DOMAIN-SUFFIX,acm.org
   - DOMAIN-SUFFIX,acs.org
   - DOMAIN-SUFFIX,agu.org
   - DOMAIN-SUFFIX,aiaa.org

@@ -85,11 +85,11 @@ proxy-groups:
 2. 连接时**绑定校园源地址**（配合 policy route 走教育网出口，绕开默认路由）；
 3. TLS 握手后**比对证书 SAN 与域名** —— 这一步能识别 DNS 投毒：被投毒时证书必然不匹配。
 
-结果：**候选 142 条 → 通过 121 条**，明细见 [`docs/resources.md`](docs/resources.md)（含每条实测状态与解析 IP）。剔除的 21 条及原因见上表。
+结果：**候选 143 条 → 通过 122 条**，明细见 [`docs/resources.md`](docs/resources.md)（含每条实测状态与解析 IP）。剔除的 21 条及原因见上表。
 
-这 121 条里：
+这 122 条里：
 
-- **109 条**原本落在 `category-scholar-!cn`，即正被模板送进代理——本仓库对它们真正起作用；
+- **110 条**原本落在 `category-scholar-!cn`，即正被模板送进代理——本仓库对它们真正起作用；
 - 4 条（知网、万方、维普、北大法宝）本就在 `category-scholar-cn`，走直连，加进来只是显式化；
 - 8 条（SpringerOpen、AIP、SPIE、ASCE、AMS 气象、JBC、Liebert、IMF）不在任何 scholar 分类里，属于补漏。
 
@@ -102,7 +102,7 @@ proxy-groups:
 | [shxiaj/Clash-paperRule](https://github.com/shxiaj/Clash-paperRule) | 18 条 | 2025-05 停更 | 规则写在 README，混入 `DOMAIN-KEYWORD,microsoft/office/docs` 等宽关键词 |
 | [microa/Clash-rules-for-academic](https://github.com/microa/Clash-rules-for-academic) | 12 条 | 2023-05 停更 | 目标组写死为 `Domestic`，复制到自己配置里会因组名不存在而报错 |
 | [SherlockChiang/direct2academic](https://github.com/SherlockChiang/direct2academic) | 21 条 | 2026-01 | v2rayN 路由 JSON，格式不通用于 Clash |
-| **本仓库** | **121 条** | 维护中 | 可直接订阅的 `behavior: classical` provider，逐条实测 + 每周自动巡检 |
+| **本仓库** | **122 条** | 维护中 | 可直接订阅的 `behavior: classical` provider，逐条实测 + 每周自动巡检 |
 
 ## 自动巡检
 
