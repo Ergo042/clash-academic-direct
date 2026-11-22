@@ -1,0 +1,20 @@
+name: purge-cdn
+
+# jsdelivr 的 @main 分支别名会缓存到旧 commit（最长约 12 小时），
+# 规则文件更新后主动 purge 一次，让 CDN 立刻拿到新内容。
+on:
+  push:
+    paths:
+      - "campus-licensed.yaml"
+  workflow_dispatch:
+
+jobs:
+  purge:
+    runs-on: ubuntu-latest
+    steps:
+      - name: 刷新 jsdelivr 缓存
+        run: |
+          for f in campus-licensed.yaml; do
+            echo "purge $f"
+            curl -fsS "https://purge.jsdelivr.net/gh/Ergo042/clash-academic-direct@main/$f" || echo "purge 请求失败（不影响仓库内容）"
+          done

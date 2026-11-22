@@ -21,7 +21,13 @@ https://raw.githubusercontent.com/Ergo042/clash-academic-direct/main/campus-lice
 https://cdn.jsdelivr.net/gh/Ergo042/clash-academic-direct@main/campus-licensed.yaml
 ```
 
-国内拉 jsdelivr 更稳；jsdelivr 有 CDN 缓存，更新后最多延迟十几分钟。规则文件是纯文本，不需要 Pages。
+国内拉 jsdelivr 更稳；但 jsdelivr 的 `@main` 是分支别名，会缓存到更新前的 commit（实测最长可达 12 小时，
+purge 接口也不一定立刻生效）。要立刻拿到最新内容，用 raw 那条，或把 URL 里的 `@main` 换成 commit sha / tag。
+仓库里带了 `purge-cdn.yml`，每次改动规则文件会自动请求刷新一次 jsdelivr 缓存。规则文件是纯文本，不需要 Pages。
+
+OpenClash 用户注意：`github_address_mod`（GitHub 加速地址）开着时，OpenClash 会把 raw 地址改写成
+`fastly.jsdelivr.net/gh/...`，于是又吃上那层 CDN 缓存——要在路由器上 `uci set openclash.config.github_address_mod='0'`
+并 commit，raw 地址才会原样使用。
 
 ## 用法
 
